@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS Code Clone</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@vscode/codicons@latest/dist/codicon.css">
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #editor-container {
+      flex: 1;
+      display: flex;
+    }
+
+    #sidebar {
+      width: 250px;
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+    #editor {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sidebar">Sidebar</div>
+  <div id="editor-container">
+    <div id="editor"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
+  <script>
+    require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor/min/vs' } });
+    require(['vs/editor/editor.main'], function () {
+      monaco.editor.create(document.getElementById('editor'), {
+        value: "// Start coding here...\n",
+        language: "javascript",
+        theme: "vs-dark"
+      });
+    });
+  </script>
+</body>
+
+</html>

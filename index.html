@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编码器</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="node_modules/xterm/css/xterm.css">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <noscript>You need to enable JavaScript to use this website</noscript>
+</head>
+<body>
+  <div class="app-container">
+    <!-- 顶部菜单栏 -->
+    <div class="menubar">
+      <div class="menu-item" id="file-menu">
+        文件
+        <div class="dropdown-menu">
+          <div class="dropdown-item" id="open-folder">打开文件夹</div>
+          <div class="dropdown-item" id="close-folder">关闭文件夹</div>
+          <div class="dropdown-item" id="create-folder">创建文件夹</div>
+          <div class="dropdown-item" id="create-file">创建文件</div>
+        </div>
+      </div>
+      <div class="menu-item" id="run">运行(Ctrl + R)</div>
+      <div class="menu-item" id="save">保存(Ctrl + S)</div>
+      <a href="./web.html" target="_blank" style="color: #cccccc; text-decoration: none;"  class="menu-item web-page">网页版（代码提示）</a>
+    </div>
+
+    <div class="main-container">
+      <!-- 活动栏 -->
+      <div class="activity-bar">
+        <div class="activity-item" data-view="explorer">
+          <span class="icon"><img src="./folder.png" alt="files" style="background-color: rgb(75, 75, 75); padding: 2px; border-radius: 5px;"></span>
+        </div>
+        <div class="activity-item terminal" data-view="terminal">
+          <span class="icon"><img src="./terminal.png" alt="terminal"></span>
+        </div>
+      </div>
+
+      <!-- 侧边栏 -->
+      <div class="sidebar">
+        <div id="file-explorer" class="view-container">
+          <div class="view-title">文件管理器</div>
+          <div style="height: 100vh; overflow: auto;" id="file-tree"></div>
+        </div>
+      </div>
+
+      <!-- 添加编辑器区域容器 -->
+      <div class="editor-area">
+        <div style="width: 100%; height: 100%;" class="logo-container">
+          <img src="./favicon.ico" alt="VS Code Logo" class="centered-logo">
+        </div>
+
+        <textarea style="resize: none; overflow: auto; background-color: transparent; width: 100%; height: 100%; outline: none; color: white; border: none; padding: 15px;" name="" id=""></textarea>
+      </div>
+    </div>
+
+    <!-- 状态栏 -->
+    <div class="statusbar">
+      <div class="status-item">Ready</div>
+      <div class="status-item">UTF-8</div>
+      <div class="status-item">JavaScript</div>
+    </div>
+  </div>
+
+  <!-- 创建文件夹的弹窗 -->
+  <div id="create-folder-popup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; background: white; border: 1px solid #ccc; border-radius: 10px;">
+    <h3 style="text-align: center;">创建新文件夹</h3>
+    <label for="folder-name">文件夹名称：</label>
+    <input style="padding: 5px; background-color: white; border: 0.3px black solid; border-radius: 5px;" type="text" id="folder-name" placeholder="输入文件夹名称">
+    <button style="padding: 3px; background-color: white; border: 0.3px black solid; border-radius: 5px;" id="create-folder-btn">确定</button>
+    <button style="padding: 3px; background-color: white; border: 0.3px black solid; border-radius: 5px;" id="cancel-create-folder">取消</button>
+  </div>
+
+  <!-- 创建文件的弹窗 -->
+  <div id="create-file-popup" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; background: white; border: 1px solid #ccc; border-radius: 10px;">
+    <h3 style="text-align: center;">创建新文件</h3>
+    <label for="file-name">文件名称：</label>
+    <input style="padding: 5px; background-color: white; border: 0.3px black solid; border-radius: 5px;" type="text" id="file-name" placeholder="输入文件名称(含扩展名)">
+    <button style="padding: 3px; background-color: white; border: 0.3px black solid; border-radius: 5px;" id="create-file-btn">确定</button>
+    <button style="padding: 3px; background-color: white; border: 0.3px black solid; border-radius: 5px;" id="cancel-create-file">取消</button>
+  </div>
+
+  <div id="file-tree"></div>
+
+  <script src="renderer.js"></script>
+  <script src="./scripts.js"></script>
+</body>
+</html>

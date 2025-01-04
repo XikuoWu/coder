@@ -1,0 +1,304 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  font-weight: 300;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #1e1e1e;
+  color: #cccccc;
+}
+
+.menubar {
+  height: 30px;
+  background-color: #3c3c3c;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.menu-item {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.activity-bar {
+  width: 50px;
+  background-color: #3e3e3e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.activity-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease; /* 添加过渡效果使颜色变化更平滑 */
+}
+
+.activity-item:hover {
+  background-color: #4a4a4a; /* 悬停时的深色背景 */
+}
+
+.activity-item.active {
+  background-color: #4a4a4a; /* 激活状态的背景色 */
+}
+
+.icon img {
+  width: 30px;
+}
+
+.sidebar {
+  width: 170px;
+  background-color: #252526;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-container {
+  padding: 10px;
+}
+
+.view-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
+.editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#editor-tabs {
+  height: 35px;
+  background-color: #2d2d2d;
+  display: flex;
+  align-items: center;
+}
+
+#editor {
+  flex: 1;
+}
+
+.panel {
+  height: 300px;
+  background-color: #1e1e1e;
+  border-top: 1px solid #333333;
+}
+
+.panel-tabs {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  background-color: #252526;
+}
+
+.panel-tab {
+  padding: 0 10px;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.panel-tab.active {
+  background-color: #1e1e1e;
+}
+
+.statusbar {
+  height: 22px;
+  background-color: #007acc;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.status-item {
+  margin-right: 20px;
+  font-size: 12px;
+}
+
+.icon img {
+  width: 30px;
+}
+
+.menu-item {
+  position: relative;
+  padding: 0 10px;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item:hover {
+  background-color: #505050;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #3c3c3c;
+  border: 1px solid #505050;
+  min-width: 150px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.menu-item:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #505050;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  background-color: #252526;
+  border-radius: 6px;
+  padding: 20px;
+  min-width: 400px;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid #3e3e3e;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3e3e3e;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #cccccc;
+}
+
+.modal-close {
+  cursor: pointer;
+  color: #999;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-content {
+  color: #cccccc;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #3e3e3e;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.modal-button.primary {
+  background-color: #0066b8;
+  color: white;
+}
+
+.modal-button.primary:hover {
+  background-color: #005999;
+}
+
+.modal-button.secondary {
+  background-color: #3c3c3c;
+  color: #cccccc;
+}
+
+.modal-button.secondary:hover {
+  background-color: #4a4a4a;
+}
+
+.editor-area {
+  flex: 1;
+  background-color: #1e1e1e;
+  position: relative;
+}
+
+.logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-logo {
+  width: 200px; /* 调整 logo 大小 */
+  opacity: 0.3; /* 设置半透明效果 */
+  user-select: none; /* 防止 logo 被选中 */
+}
+
+.folder {
+  font-weight: bold;
+}
+
+.folder .children {
+  margin-left: 20px; /* 每层嵌套增加缩进 */
+}
+
+.folder.open > span {
+  color: #007acc; /* 打开状态文件夹的颜色 */
+}
